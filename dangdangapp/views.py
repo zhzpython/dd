@@ -11,7 +11,7 @@ import os
 from django.core.mail import send_mail,EmailMultiAlternatives
 
 # Create your views here.
-def return_bookdetails(request):
+def return_bookdetails(request):   #跳转到详情页
     bookid=request.session.get('book_id')
     return redirect('/dangdang/bookdetails/?bookid='+bookid)
 
@@ -430,9 +430,8 @@ def indent(request):   #收货地址
     user=request.session.get('username')
     car=request.session.get('car')
     carboject=car.caritems
-    print(car.total_price)
-    addrinfo=AddressInfo.objects.all()
-    print(addrinfo,381)
+    userid=TUser.objects.get(name=user).id
+    addrinfo=AddressInfo.objects.filter(user_id=userid)
     if user:
         u1 = user[0:3]
     else:

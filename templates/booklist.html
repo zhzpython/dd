@@ -426,11 +426,13 @@
                             <a class="dd_first"  href="{% url 'booklist' %}?bookid={{ i.id }}&parentid=0&num=1">{{ i.sort_name }}</a>
                         </dt>
                             <dd class="con sec_cate dd_level1" >
+
                                 {% for j in sort2 %}
                                     {% if i.id == j.parent_id %}
-                                        <a  href="{% url 'booklist' %}?bookid={{ j.id }}&parentid={{ j.parent_id }}&num=1" target="_blank" title={{ j.sort_name }} class="" > {{ j.sort_name }} </a>
+                                        <a  href="{% url 'booklist' %}?bookid={{ j.id }}&parentid={{ j.parent_id }}&num=1" target="_blank" title={{ j.sort_name }} class="" > {{ j.sort_name }}</a>
                                     {% endif %}
                                 {% endfor %}
+
                             </dd>
                     </dl>
                 </div>
@@ -702,7 +704,7 @@ $(function() {
 
 
      function add_book(b) {
-        alert(b)
+
         url="{% url 'addcar' %}";
             var xhr;
             if (window.ActiveXObject ) {
